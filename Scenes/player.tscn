@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bjmnuth2xaha6"]
 
 [ext_resource type="Script" path="res://Scripts/player/movment.gd" id="1_li5h4"]
-[ext_resource type="Texture2D" uid="uid://dmidf8t1qibq5" path="res://Assets/animate_sprites/$Murcia_sprite.png" id="2_k6k7k"]
+[ext_resource type="Texture2D" uid="uid://dfd4idb41gnwi" path="res://Assets/animate_sprites/$KAI_sprite.png" id="2_od05b"]
 [ext_resource type="Texture2D" uid="uid://lwmg1t1paq4h" path="res://Assets/Sprites/light.png" id="3_x3r3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0okss"]
@@ -295,7 +295,7 @@ z_index = 2
 script = ExtResource("1_li5h4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_k6k7k")
+texture = ExtResource("2_od05b")
 hframes = 3
 vframes = 4
 
@@ -323,7 +323,7 @@ shape = SubResource("CircleShape2D_ev2hu")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, 41)
 color = Color(0.782146, 0.381924, 0.569262, 1)
-energy = 0.14
+energy = 0.1
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.631373)
 shadow_filter = 1
@@ -334,7 +334,7 @@ texture_scale = 0.8
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(1, 41)
 color = Color(0.782146, 0.381924, 0.569262, 1)
-energy = 0.3
+energy = 0.2
 shadow_color = Color(0, 0, 0, 0.631373)
 shadow_filter_smooth = 34.0
 texture = ExtResource("3_x3r3e")
