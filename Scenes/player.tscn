@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bjmnuth2xaha6"]
 
 [ext_resource type="Script" path="res://Scripts/player/movment.gd" id="1_li5h4"]
-[ext_resource type="Texture2D" uid="uid://dfd4idb41gnwi" path="res://Assets/animate_sprites/$KAI_sprite.png" id="2_od05b"]
+[ext_resource type="Texture2D" uid="uid://d4nrn13hkt7ku" path="res://Assets/animate_sprites/$Mori_sprite.png" id="2_jjnni"]
 [ext_resource type="Texture2D" uid="uid://lwmg1t1paq4h" path="res://Assets/Sprites/light.png" id="3_x3r3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0okss"]
@@ -295,7 +295,7 @@ z_index = 2
 script = ExtResource("1_li5h4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_od05b")
+texture = ExtResource("2_jjnni")
 hframes = 3
 vframes = 4
 

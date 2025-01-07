@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ucxvqyris1yt"]
+[gd_scene load_steps=46 format=3 uid="uid://ucxvqyris1yt"]
 
 [ext_resource type="PackedScene" uid="uid://bjmnuth2xaha6" path="res://Scenes/player.tscn" id="1_7ldgs"]
 [ext_resource type="Texture2D" uid="uid://biqhljk5r8h4s" path="res://Assets/tilesMaps/custom1-2.png" id="2_gqsvc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://go470bmasewa" path="res://Assets/Sprites/window light 2.png" id="9_ildp0"]
 [ext_resource type="Texture2D" uid="uid://ccu61jy4lms3m" path="res://Assets/Sprites/pixel texture.png" id="10_mtbxm"]
 [ext_resource type="Texture2D" uid="uid://c22x8dnbmkd1s" path="res://Assets/Sprites/lampa light.png" id="11_l3ykv"]
+[ext_resource type="Script" path="res://Scripts/Small_scripts/LAMPANIMATION.gd" id="11_rv5st"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mtfus"]
 texture = ExtResource("2_gqsvc")
@@ -798,7 +799,7 @@ texture_region_size = Vector2i(48, 48)
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-56, 48, 56, 48, 56, 72, -56, 72)
 6:5/0 = 0
-6:5/0/y_sort_origin = -32
+6:5/0/y_sort_origin = -49
 6:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_d6864")
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 0, 24, 0, 24, 24, -24, 24)
 8:3/0 = 0
@@ -949,7 +950,7 @@ gradient = SubResource("Gradient_shg2r")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a4bik"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(200, 70, 1)
+emission_box_extents = Vector3(100, 70, 1)
 spread = 20.73
 angular_velocity_min = -317.42
 angular_velocity_max = -247.74
@@ -958,15 +959,83 @@ radial_velocity_max = 10.75
 gravity = Vector3(0, 10, 0)
 linear_accel_min = -51.61
 linear_accel_max = -46.23
-color = Color(0.87451, 0.85098, 0.760784, 0.615686)
+color = Color(0.87451, 0.85098, 0.760784, 0.0745098)
 color_ramp = SubResource("GradientTexture1D_ht4u8")
+
+[sub_resource type="Animation" id="Animation_6h673"]
+resource_name = "light_animation"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(2.46229, 2.37842),
+"update": 0,
+"values": [0.0977384, -0.0977384]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.3, 1.36667, 1.43333, 1.5, 1.56667, 1.93333, 2.43333, 2.5, 2.56667, 3.96667, 4.33333, 4.46667, 4.6),
+"transitions": PackedFloat32Array(0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741),
+"update": 0,
+"values": [0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57]
+}
+
+[sub_resource type="Animation" id="Animation_ohrtv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_om4px"]
+resource_name = "light_animationNORMAL"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.06667),
+"transitions": PackedFloat32Array(2.54912, 2.82843),
+"update": 0,
+"values": [-0.0698132, 0.0698132]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_peecj"]
+_data = {
+"RESET": SubResource("Animation_ohrtv"),
+"light_animation": SubResource("Animation_6h673"),
+"light_animationNORMAL": SubResource("Animation_om4px")
+}
 
 [node name="med" type="Node2D"]
 y_sort_enabled = true
 
 [node name="player" parent="." instance=ExtResource("1_7ldgs")]
 y_sort_enabled = true
-position = Vector2(1461, 360)
+position = Vector2(1477, 417)
 speed = 199
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -1034,13 +1103,6 @@ process_material = SubResource("ParticleProcessMaterial_a4bik")
 texture = ExtResource("10_mtbxm")
 lifetime = 23.0
 
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-position = Vector2(1730, 451)
-scale = Vector2(0.63, 0.52)
-color = Color(0.605, 0.279556, 0.541093, 1)
-energy = 0.57
-texture = ExtResource("11_l3ykv")
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(1526.5, 445)
 scale = Vector2(0.7325, 1.63875)
@@ -1050,3 +1112,61 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.592157)
 shadow_filter = 2
 texture = ExtResource("9_ildp0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 5
+material = SubResource("CanvasItemMaterial_adqw0")
+position = Vector2(1720, 463)
+scale = Vector2(0.725, 0.685)
+amount = 11
+process_material = SubResource("ParticleProcessMaterial_a4bik")
+texture = ExtResource("10_mtbxm")
+lifetime = 23.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+z_index = 5
+material = SubResource("CanvasItemMaterial_adqw0")
+position = Vector2(1337, 641)
+scale = Vector2(0.725, 0.685)
+amount = 11
+process_material = SubResource("ParticleProcessMaterial_a4bik")
+texture = ExtResource("10_mtbxm")
+lifetime = 23.0
+
+[node name="Node2" type="Node" parent="." node_paths=PackedStringArray("light", "animator")]
+script = ExtResource("11_rv5st")
+animation = "light_animation"
+light = NodePath("PointLight2D5")
+animator = NodePath("PointLight2D5/AnimationPlayer")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Node2"]
+position = Vector2(1336, 560)
+scale = Vector2(0.63, 0.52)
+color = Color(0.605, 0.279556, 0.541093, 1)
+energy = 0.57
+texture = ExtResource("11_l3ykv")
+offset = Vector2(12.6985, 192.308)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2/PointLight2D5"]
+libraries = {
+"": SubResource("AnimationLibrary_peecj")
+}
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("light", "animator")]
+script = ExtResource("11_rv5st")
+animation = "light_animationNORMAL"
+light = NodePath("PointLight2D4")
+animator = NodePath("PointLight2D4/AnimationPlayer")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Node"]
+position = Vector2(1722, 351)
+scale = Vector2(0.63, 0.52)
+color = Color(0.605, 0.279556, 0.541093, 1)
+energy = 0.57
+texture = ExtResource("11_l3ykv")
+offset = Vector2(12.6985, 192.308)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/PointLight2D4"]
+libraries = {
+"": SubResource("AnimationLibrary_peecj")
+}
