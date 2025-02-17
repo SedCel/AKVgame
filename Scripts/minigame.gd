@@ -2,12 +2,14 @@ extends Control
 
 @export var timer_limit: float = 5.0
 var balls_clicked: int = 0
-var timer : Timer
+var timerr : Timer
+
 
 
 func _ready():
-	timer = $TimerMG
-	timer.timeout.connect(_lose_game)
+	
+	timerr = $TimerMG
+	timerr.timeout.connect(_lose_game)
 	for child in $PanelMG.get_children():
 		if child is TextureButton:
 			child.pressed.connect(_on_ball_pressed.bind(child))
@@ -19,7 +21,7 @@ func _on_ball_pressed(ball: TextureButton):
 	balls_clicked += 1
 	ball.queue_free()
 	if balls_clicked >= 3:
-		timer.stop()
+		timerr.stop()
 		finish_game()
 
 func _lose_game():
@@ -30,6 +32,7 @@ func _lose_game():
 		if child is TextureButton:
 			child.visible = false
 	
+	
 	await wait_seconds(3)
 	
 	_start_game()
@@ -38,7 +41,7 @@ func _lose_game():
 func _start_game():
 	balls_clicked = 0
 	randomize_ball_positions()
-	timer.start(timer_limit)
+	timerr.start(timer_limit)
 	
 	for child in $PanelMG.get_children():
 		if child is TextureButton:

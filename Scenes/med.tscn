@@ -962,6 +962,21 @@ linear_accel_max = -46.23
 color = Color(0.87451, 0.85098, 0.760784, 0.0745098)
 color_ramp = SubResource("GradientTexture1D_ht4u8")
 
+[sub_resource type="Animation" id="Animation_ohrtv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_6h673"]
 resource_name = "light_animation"
 length = 8.0
@@ -989,21 +1004,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741, 0.00866855, 0.0346741),
 "update": 0,
 "values": [0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57, 0.0, 0.57]
-}
-
-[sub_resource type="Animation" id="Animation_ohrtv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_om4px"]

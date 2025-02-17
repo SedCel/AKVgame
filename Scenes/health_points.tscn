@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://du4k7ojn02cx0"]
+
+[ext_resource type="Texture2D" uid="uid://d0d2u4b1n7f42" path="res://Assets/Sprites/HIL-export.png" id="1_7kt7x"]
+[ext_resource type="Script" path="res://Scripts/health_points.gd" id="1_uagln"]
+
+[sub_resource type="Animation" id="Animation_4c21w"]
+resource_name = "FullHP"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yjixr"]
+resource_name = "HalfHP"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_dkkve"]
+resource_name = "LowHP"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_7h2i7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7gac6"]
+_data = {
+"FullHP": SubResource("Animation_4c21w"),
+"HalfHP": SubResource("Animation_yjixr"),
+"LowHP": SubResource("Animation_dkkve"),
+"RESET": SubResource("Animation_7h2i7")
+}
+
+[node name="HealthPoints" type="CanvasLayer"]
+script = ExtResource("1_uagln")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, 23)
+scale = Vector2(1.24, 1.22038)
+texture = ExtResource("1_7kt7x")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_7gac6")
+}

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq6h8fkxee0co"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_pn8ud"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_pn8ud")
+scene = "TEST_ZONE"
+
+[node name="Start_Game" type="Button" parent="."]
+z_index = 2
+offset_left = -92.0
+offset_top = -31.0
+offset_right = 93.0
+offset_bottom = 28.0
+text = "START GAME "
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="Start_Game" to="." method="_on_start_game_pressed"]

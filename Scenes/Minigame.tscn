@@ -12,15 +12,22 @@ anchors_preset = 0
 offset_right = 300.0
 offset_bottom = 200.0
 script = ExtResource("1_t02r0")
+timer_limit = 3.0
 
 [node name="TimerMG" type="Timer" parent="."]
-wait_time = 5.0
 one_shot = true
 
 [node name="LabelMG" type="Label" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="LabelMG2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 2.0
+offset_right = 298.0
+offset_bottom = 25.0
 
 [node name="PanelMG" type="Panel" parent="."]
 visibility_layer = 512

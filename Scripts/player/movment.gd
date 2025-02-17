@@ -4,11 +4,26 @@ extends CharacterBody2D
 @onready var animations = $AnimationPlayer
 @onready var previousDirection: String = "down"
 @onready var actionable_finder: Area2D = $direction/ActionableFinder
+@onready var healthBar = $"../CanvasLayer/AnimationHP"
+var max_hp = 3
+var current_hp = max_hp
 
 
+func _update():
+	current_hp
+	healthBar
 
 func _ready():
-	return
+	pass
+	
+
+func update_Animation_HP():
+	if current_hp == 3:
+		healthBar.play("fullHP")
+	elif current_hp == 2:
+		healthBar.play("lowHp")
+	elif current_hp == 1:
+		healthBar.play("oneHP")
 
 
 
@@ -33,6 +48,24 @@ func updateAnimation():
 	else:
 		animations.play("walk_" + direction)
 		previousDirection = direction
+		
+
+
+func heal(amount):
+	current_hp += amount
+	if current_hp > max_hp:
+		current_hp = max_hp
+	update_Animation_HP()
+
+func taken_damage(amount):
+	current_hp -= amount
+	update_Animation_HP()
+	if current_hp <= 0:
+		death()
+	
+
+func death():
+	queue_free()
 
 
 func _physics_process(_delta):
@@ -40,3 +73,11 @@ func _physics_process(_delta):
 	move_and_slide()
 	updateAnimation()
 	
+
+
+func _on__hp_pressed() -> void:
+	taken_damage(1)
+
+
+func _on__hpplus_pressed() -> void:
+	heal(1)
