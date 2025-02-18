@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var previousDirection: String = "down"
 @onready var actionable_finder: Area2D = $direction/ActionableFinder
 @onready var healthBar = $"../CanvasLayer/AnimationHP"
+
+
 var max_hp = 3
 var current_hp = max_hp
 

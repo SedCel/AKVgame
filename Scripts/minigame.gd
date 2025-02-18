@@ -3,9 +3,10 @@ extends Control
 @export var timer_limit: float = 5.0
 var balls_clicked: int = 0
 var timerr : Timer
+signal lose_mg
 
 
-
+	
 func _ready():
 	
 	timerr = $TimerMG
@@ -19,7 +20,7 @@ func _ready():
 
 func _on_ball_pressed(ball: TextureButton):
 	balls_clicked += 1
-	ball.queue_free()
+	ball.visible = false
 	if balls_clicked >= 3:
 		timerr.stop()
 		finish_game()
@@ -27,16 +28,15 @@ func _on_ball_pressed(ball: TextureButton):
 func _lose_game():
 	$LabelMG.text = "LOSER TRY AGAIN"
 	$LabelMG.visible = true
+	emit_signal("lose_mg")
 	
 	for child in $PanelMG.get_children():
 		if child is TextureButton:
 			child.visible = false
-	
-	
-	await wait_seconds(3)
+			
+	await wait_seconds(2)
 	
 	_start_game()
-	
 
 func _start_game():
 	balls_clicked = 0
